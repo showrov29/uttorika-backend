@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const { createProduct } = require("../controllers/productController");
+const { isAdmin } = require("../middlewares/authAdmin");
 
-router.post("/add", (req, res) => {
-	res.send("products ");
-});
+router.post("/create", isAdmin, createProduct);
 router.get("/get:id", (req, res) => {
 	res.send("products Route");
 });
